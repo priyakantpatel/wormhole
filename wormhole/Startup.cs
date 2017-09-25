@@ -7,18 +7,20 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net;
+using wormhole.policy;
+using wormhole.Manager;
 
 namespace wormhole
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        ApiManager _apiManager;  //Special internal policy
+
         public void ConfigureServices(IServiceCollection services)
         {
+            _apiManager = new ApiManager();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -26,12 +28,72 @@ namespace wormhole
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
+            app.Run(RequestDelegate);
+        }
+
+        private async Task RequestDelegate(HttpContext context)
+        {
+            try
             {
-                context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                await context.Response.WriteAsync("NotFound");
-                return;
-            });
+                var options = _apiManager.CreateProductProxyOptions(context);
+
+                if (options == null)
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    await context.Response.WriteAsync("NotFound");
+                }
+                else
+                {
+                    if (!RunInboundPolicy(context, options))
+                    {
+                        //Policy must set "HttpStatusCode" and-or content
+                        return;
+                    }
+
+                    await TempBackendCall(context, options.Options);
+                    RunOutboundPolicy(context, options);
+                }
+            }
+            catch (Exception ex)
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                await context.Response.WriteAsync(ex.ToString());
+            }
+        }
+
+        private bool RunInboundPolicy(HttpContext context, ProductProxyOptions productOptions)
+        {
+            if (productOptions.InboundPolicies != null)
+            {
+                foreach (var item in productOptions.InboundPolicies)
+                {
+                    if (item.Run(context, productOptions.Options))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool RunOutboundPolicy(HttpContext context, ProductProxyOptions productOptions)
+        {
+            if (productOptions.OutboundPolicies != null)
+            {
+                foreach (var item in productOptions.OutboundPolicies)
+                {
+                    if (item.Run(context, productOptions.Options))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private Task TempBackendCall(HttpContext context, ProxyOptions options)
+        {
+            return context.Response.WriteAsync("Hello world");
         }
     }
 }

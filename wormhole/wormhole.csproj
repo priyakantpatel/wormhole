@@ -17,4 +17,9 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\wormhole.policy.aspnetcore\wormhole.policy.aspnetcore.csproj" />
+    <ProjectReference Include="..\wormhole.policy\wormhole.policy.csproj" />
+  </ItemGroup>
+
 </Project>
