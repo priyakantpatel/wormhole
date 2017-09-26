@@ -23,6 +23,8 @@ namespace wormhole
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            //http://product-api-app.azurewebsites.net/swagger/
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
