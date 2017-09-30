@@ -8,6 +8,6 @@ namespace wormhole.models
     {
         string Version { get; set; }    // Got idea From Swagger
         string Title { get; set; }    // Got idea From Swagger
-        IList<IOperation> Operations { get; set; }
+        List<Operation> Operations { get; set; }
     }
 }

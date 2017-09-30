@@ -4,7 +4,7 @@ using System.Text;
 
 namespace wormhole.models
 {
-    public interface IOperation
+    public class Operation
     {
         /// <summary>
         /// get, put, post, delete, ...

@@ -3,14 +3,10 @@ using System.Collections.Generic;
 
 namespace wormhole.models
 {
-
-    public class IApiManager    // ??Need more thinking??
+    public class Api
     {
-        public IList<IApi> Apis { get; set; }
-    }
+        string Id { get; set; }
 
-    public interface IApi
-    {
         /// <summary>
         /// "swagger", Custom
         /// </summary>
@@ -28,6 +24,6 @@ namespace wormhole.models
         /// </summary>
         string DiscoveryUrl { get; set; }
 
-        IList<IOperation> Operations { get; set; }
+        List<Operation> Operations { get; set; }
     }
 }

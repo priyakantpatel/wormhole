@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26906.1
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole", "wormhole\wormhole.csproj", "{D7A90F77-8D95-4361-9D18-5F61AA9010EE}"
 EndProject
@@ -18,6 +18,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "temp", "temp", "{2AF09682-8BAC-44BD-B0D5-A6D3C34D0177}"
 	ProjectSection(SolutionItems) = preProject
 		stiky-01.txt = stiky-01.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wormhole.repository", "..\wormhole.repository\wormhole.repository.csproj", "{77485E23-F135-4BA6-9C2C-E63F27AF28CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wormhole.repository.test", "wormhole.repository.test\wormhole.repository.test.csproj", "{6C144F88-2BF9-4174-8DC5-B81CC2982D97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{80DC3BE1-6EB4-4EBA-B522-C95DDB0E73E2}"
+	ProjectSection(SolutionItems) = preProject
+		windows.setup.bat = windows.setup.bat
 	EndProjectSection
 EndProject
 Global
@@ -48,6 +57,14 @@ Global
 		{443EA506-9C5B-461A-88F6-E5C73741CBAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{443EA506-9C5B-461A-88F6-E5C73741CBAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{443EA506-9C5B-461A-88F6-E5C73741CBAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77485E23-F135-4BA6-9C2C-E63F27AF28CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77485E23-F135-4BA6-9C2C-E63F27AF28CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77485E23-F135-4BA6-9C2C-E63F27AF28CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77485E23-F135-4BA6-9C2C-E63F27AF28CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C144F88-2BF9-4174-8DC5-B81CC2982D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C144F88-2BF9-4174-8DC5-B81CC2982D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C144F88-2BF9-4174-8DC5-B81CC2982D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C144F88-2BF9-4174-8DC5-B81CC2982D97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
