@@ -10,12 +10,10 @@ namespace wormhole.repository.test
 {
     public class ZTemp
     {
-        [Fact(DisplayName = "ZTemp.create.repo")]
-        public void CreatRepoInstantTest()
+        [Fact(DisplayName = "ZTemp.test_a")]
+        public void test_a()
         {
-            IWormholeRepository db = new WormholeDiskRepository();
 
-            db.Config.Should().NotBeNull();
         }
     }
 }
