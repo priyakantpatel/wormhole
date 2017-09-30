@@ -4,7 +4,7 @@ using System.Text;
 
 namespace wormhole.models
 {
-    public class WormholeDatabase
+    public class WormholeConfig
     {
         public virtual string Name { get; set; }
         public virtual string Version { get; set; }
