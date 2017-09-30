@@ -5,25 +5,26 @@ namespace wormhole.models
 {
     public class Api
     {
-        string Id { get; set; }
+        public string Id { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// "swagger", Custom
         /// </summary>
-        string GroupType { get; set; }
+        public string GroupType { get; set; }
 
         /// <summary>
         /// if value of UrlSuffix is "album"
         /// Base URL => http(s)://localhost/
         /// Base Api Url will be => http(s)://localhost/album
         /// </summary>
-        string UrlSuffix { get; set; }
+        public string UrlSuffix { get; set; }
 
         /// <summary>
         /// Example: Swagger endpoint or other discovery mechanism 
         /// </summary>
-        string DiscoveryUrl { get; set; }
+        public string DiscoveryUrl { get; set; }
 
-        List<Operation> Operations { get; set; }
+        public List<Operation> Operations { get; set; }
     }
 }
