@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+
+namespace wormhole.models.repository
+{
+    public class WormholeFileRepository : IWormholeRepository
+    {
+        public const string ConfigFileName = "wormhole.json";
+        public readonly string _configFilePath;
+        //private ApiConfig _apiConfig = null;
+
+        public WormholeFileRepository(string dataPath)
+        {
+            if (!Directory.Exists(dataPath))
+            {
+                throw new Exception($"Path not exists {dataPath ?? ""}");
+            }
+
+            _configFilePath = Path.Combine(dataPath, ConfigFileName);
+
+            LoadApiConfig();
+        }
+
+        private void LoadApiConfig()
+        {
+            string jsonString = ReadJsonStringFromFile(_configFilePath);
+            var _apiConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiConfig>(jsonString);
+        }
+
+        private void SaveApiConfig(string content)
+        {
+            SaveJsonStringToFile(_configFilePath, content);
+        }
+
+        string ReadJsonStringFromFile(string path)
+        {
+            if (File.Exists(path))
+            {
+                return File.ReadAllText(_configFilePath);
+            }
+            return "{}";
+        }
+
+        void SaveJsonStringToFile(string path, string content)
+        {
+            File.WriteAllText(path, content);
+        }
+    }
+
+    public class ApiConfig
+    {
+        //public List<Api> Apis { get; set; }
+    }
+}
