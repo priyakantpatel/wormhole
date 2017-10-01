@@ -13,7 +13,7 @@ namespace wormhole.repository
 
         #region Api Collections
 
-        List<Api> ApiCollection { get; set; }
+        List<Api> GetApiCollection();
         Api GetApi(string Id);
 
         #endregion

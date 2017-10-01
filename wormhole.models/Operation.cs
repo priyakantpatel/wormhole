@@ -9,12 +9,12 @@ namespace wormhole.models
         /// <summary>
         /// get, put, post, delete, ...
         /// </summary>
-        string HttpVerb { get; set; }
+        public string HttpVerb { get; set; }
         /// <summary>
         /// Example get album by id => /album/{id}?query
         /// </summary>
-        string Path { get; set; }
-        string OperationId { get; set; }    // Can be null
-        string Description { get; set; }
+        public string Path { get; set; }
+        public string OperationId { get; set; }    // Can be null
+        public string Description { get; set; }
     }
 }
