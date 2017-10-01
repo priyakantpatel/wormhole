@@ -24,7 +24,7 @@ namespace wormhole.models
         /// Example: Swagger endpoint or other discovery mechanism 
         /// </summary>
         public string DiscoveryUrl { get; set; }
-
-        public List<Operation> Operations { get; set; }
+        public string BackendBasePathUrl { get; set; }
+        public virtual List<Operation> Operations { get; set; }
     }
 }
