@@ -1,0 +1,8 @@
+﻿{
+  "Id": "api-00001",
+  "DisplayName": "Product-API - 01",
+  "GroupType": "SwaggerJson",
+  "UrlSuffix": "Product-Api",
+  "DiscoveryUrl": "http://product-api-app.azurewebsites.net/swagger/v1/swagger.json",
+  "Operations": null
+}

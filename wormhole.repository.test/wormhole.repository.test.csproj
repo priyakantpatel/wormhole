@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\wormhole.repository\wormhole.repository.csproj" />
     <ProjectReference Include="..\wormhole.models\wormhole.models.csproj" />
+    <ProjectReference Include="..\wormhole.repository\wormhole.repository.csproj" />
   </ItemGroup>
 
 </Project>

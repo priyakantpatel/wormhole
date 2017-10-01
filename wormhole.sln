@@ -20,9 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "temp", "temp", "{2AF09682-8
 		stiky-01.txt = stiky-01.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole.repository", "..\wormhole.repository\wormhole.repository.csproj", "{77485E23-F135-4BA6-9C2C-E63F27AF28CC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole.repository.test", "wormhole.repository.test\wormhole.repository.test.csproj", "{6C144F88-2BF9-4174-8DC5-B81CC2982D97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole.repository", "wormhole.repository\wormhole.repository.csproj", "{8B8AFA77-CBA0-444D-8631-3E0A3AB88052}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,14 +52,14 @@ Global
 		{443EA506-9C5B-461A-88F6-E5C73741CBAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{443EA506-9C5B-461A-88F6-E5C73741CBAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{443EA506-9C5B-461A-88F6-E5C73741CBAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77485E23-F135-4BA6-9C2C-E63F27AF28CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77485E23-F135-4BA6-9C2C-E63F27AF28CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77485E23-F135-4BA6-9C2C-E63F27AF28CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77485E23-F135-4BA6-9C2C-E63F27AF28CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C144F88-2BF9-4174-8DC5-B81CC2982D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C144F88-2BF9-4174-8DC5-B81CC2982D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C144F88-2BF9-4174-8DC5-B81CC2982D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C144F88-2BF9-4174-8DC5-B81CC2982D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8AFA77-CBA0-444D-8631-3E0A3AB88052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8AFA77-CBA0-444D-8631-3E0A3AB88052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8AFA77-CBA0-444D-8631-3E0A3AB88052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8AFA77-CBA0-444D-8631-3E0A3AB88052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
