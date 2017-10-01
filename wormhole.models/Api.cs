@@ -9,7 +9,7 @@ namespace wormhole.models
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// "swagger", Custom
+        /// "SwaggerJson", Custom
         /// </summary>
         public string GroupType { get; set; }
 

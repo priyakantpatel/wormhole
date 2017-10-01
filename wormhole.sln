@@ -24,12 +24,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole.repository", "..\w
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole.repository.test", "wormhole.repository.test\wormhole.repository.test.csproj", "{6C144F88-2BF9-4174-8DC5-B81CC2982D97}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{80DC3BE1-6EB4-4EBA-B522-C95DDB0E73E2}"
-	ProjectSection(SolutionItems) = preProject
-		windows.setup.bat = windows.setup.bat
-		wormhole-config.json = wormhole-config.json
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
