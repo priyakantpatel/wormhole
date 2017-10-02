@@ -18,28 +18,68 @@ namespace WormholeServices.Swagger2
                 var pathItem = pathItemKv.Value;
                 var pathItemKey = pathItemKv.Key;
 
-                var operation = new Operation();
-
+                //GET
                 if (pathItem.Get != null)
                 {
-                    operation.HttpVerb = "GET";
-                    operation.OperationId = pathItem.Get.OperationId;
-                    operation.Path = pathItemKey;
-                    operation.Description = "Kool";
+                    var operation = GetOperation(GetPathFromBase(sDoc.BasePath, pathItemKey), pathItem.Get, "GET");
+                    returnValue.Add(operation);
                 }
-
+                //POST
                 if (pathItem.Post != null)
                 {
-                    operation.HttpVerb = "POST";
-                    operation.OperationId = pathItem.Post.OperationId;
-                    operation.Path = pathItemKey;
-                    operation.Description = "Kool";
+                    var operation = GetOperation(GetPathFromBase(sDoc.BasePath, pathItemKey), pathItem.Post, "POST");
+                    returnValue.Add(operation);
+                }
+                //PUT
+                if (pathItem.Put != null)
+                {
+                    var operation = GetOperation(GetPathFromBase(sDoc.BasePath, pathItemKey), pathItem.Put, "PUT");
+                    returnValue.Add(operation);
+                }
+                //DELETE
+                if (pathItem.Delete != null)
+                {
+                    var operation = GetOperation(GetPathFromBase(sDoc.BasePath, pathItemKey), pathItem.Delete, "DELETE");
+                    returnValue.Add(operation);
+                }
+                //OPTIONS
+                if (pathItem.Options != null)
+                {
+                    var operation = GetOperation(GetPathFromBase(sDoc.BasePath, pathItemKey), pathItem.Options, "OPTIONS");
+                    returnValue.Add(operation);
+                }
+                //HEAD
+                if (pathItem.Head != null)
+                {
+                    var operation = GetOperation(GetPathFromBase(sDoc.BasePath, pathItemKey), pathItem.Head, "HEAD");
+                    returnValue.Add(operation);
+                }
+                //PATCH
+                if (pathItem.Patch != null)
+                {
+                    var operation = GetOperation(GetPathFromBase(sDoc.BasePath, pathItemKey), pathItem.Patch, "PATCH");
+                    returnValue.Add(operation);
                 }
 
-                returnValue.Add(operation);
             }
 
             return returnValue;
+        }
+
+        static Operation GetOperation(string path, wormhole.services.Swagger2.Operation opration, string httpVerb)
+        {
+            return new Operation
+            {
+                HttpVerb = httpVerb,
+                OperationId = opration.OperationId,
+                Path = path,
+                Description = "",
+            };
+        }
+
+        static string GetPathFromBase(string basePath, string path)
+        {
+            return (basePath == "/") ? path : $"{basePath}{path}";
         }
     }
 }

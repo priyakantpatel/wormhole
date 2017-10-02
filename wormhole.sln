@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.26906.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole", "wormhole\wormhole.csproj", "{D7A90F77-8D95-4361-9D18-5F61AA9010EE}"
 EndProject
@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole.repository.test", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole.repository", "wormhole.repository\wormhole.repository.csproj", "{8B8AFA77-CBA0-444D-8631-3E0A3AB88052}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wormhole.services", "wormhole.services\wormhole.services.csproj", "{6F291B26-BFD9-4FFF-B3E8-2D7002A92549}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wormhole.services", "wormhole.services\wormhole.services.csproj", "{6F291B26-BFD9-4FFF-B3E8-2D7002A92549}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wormhole.services.test", "wormhole.services.test\wormhole.services.test.csproj", "{0D3BCFF5-33D0-4B0E-A3C5-86771570229C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +68,10 @@ Global
 		{6F291B26-BFD9-4FFF-B3E8-2D7002A92549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F291B26-BFD9-4FFF-B3E8-2D7002A92549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F291B26-BFD9-4FFF-B3E8-2D7002A92549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D3BCFF5-33D0-4B0E-A3C5-86771570229C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D3BCFF5-33D0-4B0E-A3C5-86771570229C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D3BCFF5-33D0-4B0E-A3C5-86771570229C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D3BCFF5-33D0-4B0E-A3C5-86771570229C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

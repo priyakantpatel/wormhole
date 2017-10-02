@@ -34,13 +34,14 @@ namespace wormhole.services
 
         public Api UpsertApi(Api api)
         {
-            //1. update api
-            return null;
+            throw new Exception("Not implemented");
         }
 
         public List<Operation> GetApiOperations(Api api)
         {
-            throw new Exception("Not implemented");
+            var operations = DiscoverOperations(api).Result;
+            return operations;
+            //throw new Exception("Not implemented");
         }
 
 
@@ -64,12 +65,8 @@ namespace wormhole.services
                 return Swagger2Helper.GetOperationsFromSwaggerJson(jsonString);
 
             }
-            else
-            {
-                throw new Exception($"Invalid GroupType [{api.GroupType ?? ""}]");
-            }
 
-            return null;
+            throw new Exception($"Invalid GroupType [{api.GroupType ?? ""}]");
         }
 
         /// <summary>

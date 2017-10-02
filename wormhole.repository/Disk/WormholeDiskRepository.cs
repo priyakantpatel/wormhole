@@ -24,8 +24,6 @@ namespace wormhole.repository.Disk
 
             LoadConfig();
             ValidateConfig();
-            //GetApiCollection();
-            //DiscoverApi();
         }
 
         #region Load Config
@@ -58,6 +56,11 @@ namespace wormhole.repository.Disk
             Console.WriteLine($"DataDirectory [{_config.DataDirectory}]");
 
             Directory.CreateDirectory(_config.DataDirectory);
+        }
+
+        public WormholeConfig UpsertConfig(WormholeConfig config)
+        {
+            throw new Exception("Not implemented");
         }
 
         private void SaveApiConfig(string content)

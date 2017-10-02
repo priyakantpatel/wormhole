@@ -8,6 +8,7 @@ namespace wormhole.repository
         #region WormholeDatabase
 
         WormholeConfig Config { get; }
+        WormholeConfig UpsertConfig(WormholeConfig config);
 
         #endregion
 
