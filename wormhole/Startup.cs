@@ -18,7 +18,7 @@ namespace wormhole
 
         public void ConfigureServices(IServiceCollection services)
         {
-            _apiManager = new ApiManager();
+            _apiManager = new ApiManager(new repository.Disk.WormholeDiskRepository());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -52,7 +52,9 @@ namespace wormhole
                         return;
                     }
 
-                    await TempBackendCall(context, options.Options);
+                    //await TempBackendCall(context, options);
+                    await proxy.WormholeProxy.HandleHttpRequestX(context, options.BackendBaseUri);
+
                     RunOutboundPolicy(context, options);
                 }
             }
@@ -69,10 +71,7 @@ namespace wormhole
             {
                 foreach (var item in productOptions.InboundPolicies)
                 {
-                    if (item.Run(context, productOptions.Options))
-                    {
                         return false;
-                    }
                 }
             }
             return true;
@@ -84,7 +83,7 @@ namespace wormhole
             {
                 foreach (var item in productOptions.OutboundPolicies)
                 {
-                    if (item.Run(context, productOptions.Options))
+                    if (item.Run(context, productOptions))
                     {
                         return false;
                     }

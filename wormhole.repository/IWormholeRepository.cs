@@ -18,5 +18,10 @@ namespace wormhole.repository
         Api GetApi(string Id);
 
         #endregion
+
+        #region Routes
+        List<RouteDefinition> GetRouteDefinitions();
+
+        #endregion
     }
 }

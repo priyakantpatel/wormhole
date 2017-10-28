@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\wormhole.policy.aspnetcore\wormhole.policy.aspnetcore.csproj" />
     <ProjectReference Include="..\wormhole.policy\wormhole.policy.csproj" />
+    <ProjectReference Include="..\wormhole.repository\wormhole.repository.csproj" />
   </ItemGroup>
 
 </Project>

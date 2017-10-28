@@ -20,12 +20,12 @@ namespace wormhole.models
 
 
     /* ** Need to verify - start ** */
-    public class RouteTable
-    {
-        public List<RouteRule> Rules { get; set; }
-    }
+    //public class Routes
+    //{
+    //    public List<RouteDefinition> Rules { get; set; } = new List<RouteDefinition>();
+    //}
 
-    public class RouteRule
+    public class RouteDefinition
     {
         /// <summary>
         /// *, get, put, post, delete, ...
@@ -34,10 +34,13 @@ namespace wormhole.models
         /// <summary>
         /// Example get album by id => /album/*
         /// </summary>
-        public string PathExpression { get; set; }
+        public string PathStartsWith { get; set; }
         public string BackendPath { get; set; }
         public List<string> InboundPolicies { get; set; }
         public List<string> OutboundPolicies { get; set; }
+
+        //Note: Future use
+        public string ProductId { get; set; }   //??
     }
     /* ** Need to verify - end ** */
 }

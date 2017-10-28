@@ -169,5 +169,34 @@ namespace wormhole.repository.Disk
         }
 
         #endregion
+
+        #region Routes
+        public List<RouteDefinition> GetRouteDefinitions()
+        {
+            var returnValue = new List<RouteDefinition>();
+
+            returnValue.Add(new RouteDefinition
+            {
+                BackendPath= "http://product-api-app.azurewebsites.net/Products",
+                HttpVerb="*",
+                InboundPolicies = new List<string>(),
+                OutboundPolicies = new List<string>(),
+                PathStartsWith = "/product-api/",
+                ProductId = "x-p1",
+            });
+
+            returnValue.Add(new RouteDefinition
+            {
+                BackendPath = "http://product-api-app.azurewebsites.net/api/Values",
+                HttpVerb = "*",
+                InboundPolicies = new List<string>(),
+                OutboundPolicies = new List<string>(),
+                PathStartsWith = "/value-api/",
+                ProductId = "x-p2",
+            });
+            return returnValue;
+        }
+
+        #endregion
     }
 }
