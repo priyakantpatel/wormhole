@@ -1,0 +1,10 @@
+[
+  {
+    "BackendPath": "http://product-api-app.azurewebsites.net/",
+    "HttpVerb": "*",
+    "InboundPolicies": [],
+    "OutboundPolicies": [],
+    "PathStartsWith": "/product/",
+    "ProductId": "x-p1"
+  }
+]

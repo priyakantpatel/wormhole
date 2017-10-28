@@ -19,5 +19,14 @@ namespace wormhole.repository.test.Disk
             Directory.Exists(db.Config.DataDirectory).Should().BeTrue();
             //Directory.Exists(Path.Combine(db.Config.DataDirectory, WormholeDiskRepository.API_DISCOVERY_FILDER)).Should().BeTrue();
         }
+
+        [Fact(DisplayName = "WormholeDiskRepository.RouteDefinition")]
+        public void RouteDefinitionTest()
+        {
+            IWormholeRepository db = new WormholeDiskRepository();
+
+            var routes = db.GetRouteDefinitions();
+            routes.Should().NotBeNullOrEmpty();
+        }
     }
 }

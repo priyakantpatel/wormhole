@@ -10,6 +10,7 @@ namespace wormhole.models
         public string Name { get; set; }
         public string Version { get; set; }
         public string DataDirectory { get; set; }
+        public string RouteDefinitionFile { get; set; }
         public List<Api> ApiCollection { get; set; }
         //Other wormhole wide configuration
     }

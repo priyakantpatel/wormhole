@@ -173,12 +173,24 @@ namespace wormhole.repository.Disk
         #region Routes
         public List<RouteDefinition> GetRouteDefinitions()
         {
+            Console.WriteLine($"Load GetRouteDefinitions");
+
+            var routeDefinitionFile = Path.Combine(_config.DataDirectory, _config.RouteDefinitionFile);
+
+            string jsonString = ReadJsonStringFromFile(routeDefinitionFile);
+            var routeDefinitions = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RouteDefinition>>(jsonString);
+
+            return routeDefinitions;
+        }
+
+        public List<RouteDefinition> GetRouteDefinitionsX()
+        {
             var returnValue = new List<RouteDefinition>();
 
             returnValue.Add(new RouteDefinition
             {
-                BackendPath= "http://product-api-app.azurewebsites.net/Products",
-                HttpVerb="*",
+                BackendPath = "http://product-api-app.azurewebsites.net/Products",
+                HttpVerb = "*",
                 InboundPolicies = new List<string>(),
                 OutboundPolicies = new List<string>(),
                 PathStartsWith = "/product-api/",
