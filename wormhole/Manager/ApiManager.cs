@@ -45,10 +45,12 @@ namespace wormhole.Manager
         public ProductProxyOptions CreateProductProxyOptions(HttpContext context)
         {
             var path = context.Request.Path.ToString();
+            var endWithSlash = true;
 
             if (!path.EndsWith('/'))
             {
                 path = path + '/';
+                endWithSlash = false;
             }
 
             //Note: We will improve performance in future
@@ -58,12 +60,18 @@ namespace wormhole.Manager
                 {
                     var newPath = path.Replace(item.PathExpression, "", StringComparison.OrdinalIgnoreCase);
 
-                    return new ProductProxyOptions
+                    var rv = new ProductProxyOptions
                     {
                         BackendBaseUri = $"{item.BackendPath}/{newPath}",   //Note: We will improve performance in future
                         InboundPolicies = item.InboundPolicies,
                         OutboundPolicies = item.OutboundPolicies,
                     };
+                    
+                    if (!endWithSlash)  //Note: We will improve performance in future
+                    {
+                        rv.BackendBaseUri = rv.BackendBaseUri.TrimEnd('/');
+                    }
+                    return rv;
                 }
             }
 

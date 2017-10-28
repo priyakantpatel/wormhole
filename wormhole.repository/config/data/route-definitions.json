@@ -6,5 +6,13 @@
     "OutboundPolicies": [],
     "PathStartsWith": "/product/",
     "ProductId": "x-p1"
+  },
+  {
+    "BackendPath": "http://httpbin.org/",
+    "HttpVerb": "*",
+    "InboundPolicies": [],
+    "OutboundPolicies": [],
+    "PathStartsWith": "/httpbin/",
+    "ProductId": "x-p1"
   }
 ]
