@@ -1,37 +1,77 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Protocols;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using wormhole.policy.aspnetcore;
 
 namespace wormhole.policy
 {
-    /// <summary>
-    /// Special internal policy to Initialize api management
-    /// </summary>
-    internal class InitializeProxyOptionsPolicy : IPolicy
-    {
-        public ServiceTypeEnum ServiceType { get; set; }
+    //public class OpenIdConnectJwtPolicyConfig
+    //{
+    //    public string MetadataEndpoint { get; set; }
+    //    public string ValidIssuer { get; set; }
+    //    public List<string> ValidAudiences { get; set; }
+    //    //We will validate other properties in future
+    //}
 
-        public bool Run(HttpContext context, ProxyOptions options)
-        {
-            return true;
-        }
-    }
     //OpenIdConnectJwtPolicy
     public class OpenIdConnectJwtPolicy : IPolicy
     {
         public ServiceTypeEnum ServiceType { get; set; }
-
-        public OpenIdConnectJwtPolicy()
+        //readonly OpenIdConnectJwtPolicyConfig _config = null;
+        readonly JwtSecurityTokenHandler _handler = null;
+        readonly TokenValidationParameters _validationParameters = null;
+        public OpenIdConnectJwtPolicy(Dictionary<string, string> config)
         {
+            IConfigurationManager<OpenIdConnectConfiguration> configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
+                //"https://login.microsoftonline.com/PSGCustomerDev.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_absg-custom-login-ui",
+                config["MetadataEndpoint"],
+                new OpenIdConnectConfigurationRetriever());
 
+            OpenIdConnectConfiguration openIdConfig = configurationManager.GetConfigurationAsync(CancellationToken.None).Result;
+
+            _validationParameters = new TokenValidationParameters
+            {
+                ValidIssuer = config["ValidIssuer"],
+                //ValidAudiences = ValidAudiencesList, //new[] { audience },
+                IssuerSigningKeys = openIdConfig.SigningKeys
+            };
+
+            if (config.ContainsKey("ValidAudiences"))
+            {
+                var ValidAudiences = config["ValidAudiences"].Split(';');
+                var ValidAudiencesList = ValidAudiences.Where(x => !string.IsNullOrWhiteSpace(x));
+                _validationParameters.ValidAudiences = ValidAudiencesList;
+            }
+
+
+            _handler = new JwtSecurityTokenHandler();
         }
 
         public bool Run(HttpContext context, ProxyOptions options)
         {
-            return true;
+            try
+            {
+                //Authorization
+                var tokenWithBearer = context.Request.Headers["Authorization"].First();
+                var token = tokenWithBearer.Substring("Bearer ".Length);
+                SecurityToken validatedToken;
+                var user = _handler.ValidateToken(token, _validationParameters, out validatedToken);
+                return true;
+            }
+            catch (Exception ex)
+            {
+            }
+
+            context.Response.Clear();
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            return false;
         }
     }
 }

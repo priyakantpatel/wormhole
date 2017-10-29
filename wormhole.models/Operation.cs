@@ -36,8 +36,10 @@ namespace wormhole.models
         /// </summary>
         public string PathStartsWith { get; set; }
         public string BackendPath { get; set; }
-        public List<string> InboundPolicies { get; set; }
-        public List<string> OutboundPolicies { get; set; }
+        //public List<string> InboundPolicies { get; set; }
+        //public List<string> OutboundPolicies { get; set; }
+        public List<Dictionary<string, string>> InboundPolicies { get; set; }
+        public List<Dictionary<string, string>> OutboundPolicies { get; set; }
 
         //Note: Future use
         public string ProductId { get; set; }   //??

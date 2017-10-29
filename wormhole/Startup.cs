@@ -71,8 +71,10 @@ namespace wormhole
             {
                 foreach (var item in productOptions.InboundPolicies)
                 {
-                    item.Run(context, productOptions);
-                    return false;
+                    if (!item.Run(context, productOptions))
+                    {
+                        return false;
+                    }
                 }
             }
             return true;
@@ -84,9 +86,8 @@ namespace wormhole
             {
                 foreach (var item in productOptions.OutboundPolicies)
                 {
-                    if (item.Run(context, productOptions))
+                    if (!item.Run(context, productOptions))
                     {
-                        item.Run(context, productOptions);
                         return false;
                     }
                 }

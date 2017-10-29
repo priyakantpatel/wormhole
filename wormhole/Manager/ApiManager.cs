@@ -30,15 +30,28 @@ namespace wormhole.Manager
 
             foreach (var item in routes)
             {
-                _routeTable.Routes.Add(
-                    new Route
-                    {
-                        BackendPath = item.BackendPath,
-                        HttpVerb = item.HttpVerb,
-                        InboundPolicies = new List<IPolicy>(),
-                        OutboundPolicies = new List<IPolicy>(),
-                        PathExpression = item.PathStartsWith,
+                var rd = new Route
+                {
+                    BackendPath = item.BackendPath,
+                    HttpVerb = item.HttpVerb,
+                    InboundPolicies = new List<IPolicy>(),
+                    OutboundPolicies = new List<IPolicy>(),
+                    PathExpression = item.PathStartsWith,
+                };
+
+                if(item.InboundPolicies != null)
+                {
+                    item.InboundPolicies.ForEach(x => {
+                        if(x["Name"] == "OpenIdConnectJwtPolicyConfig")
+                        {
+                            rd.InboundPolicies.Add(
+                                new OpenIdConnectJwtPolicy(x)
+                                );
+                        }
                     });
+                }
+
+                _routeTable.Routes.Add(rd);
             }
         }
 

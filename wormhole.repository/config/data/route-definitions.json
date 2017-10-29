@@ -2,10 +2,18 @@
   {
     "BackendPath": "http://product-api-app.azurewebsites.net/",
     "HttpVerb": "*",
-    "InboundPolicies": [],
-    "OutboundPolicies": [],
     "PathStartsWith": "/product/",
-    "ProductId": "x-p1"
+    "ProductId": "x-p1",
+    "InboundPolicies": [
+      {
+        "Name": "OpenIdConnectJwtPolicyConfig",
+        "MetadataEndpoint": "https://login.microsoftonline.com/PSGCustomerDev.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_absg-custom-login-ui",
+        "ValidIssuer": "https://login.microsoftonline.com/aede7b95-4764-4d15-8739-02c90198649e/v2.0/",
+        "ValidAudiences": "36e2d53f-b909-4977-aece-1ed1a49c9722"
+
+      }
+    ],
+    "OutboundPolicies": []
   },
   {
     "BackendPath": "http://httpbin.org/",

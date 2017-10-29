@@ -191,8 +191,8 @@ namespace wormhole.repository.Disk
             {
                 BackendPath = "http://product-api-app.azurewebsites.net/Products",
                 HttpVerb = "*",
-                InboundPolicies = new List<string>(),
-                OutboundPolicies = new List<string>(),
+                InboundPolicies = new List<Dictionary<string, string>>(),
+                OutboundPolicies = new List<Dictionary<string, string>>(),
                 PathStartsWith = "/product-api/",
                 ProductId = "x-p1",
             });
@@ -201,8 +201,8 @@ namespace wormhole.repository.Disk
             {
                 BackendPath = "http://product-api-app.azurewebsites.net/api/Values",
                 HttpVerb = "*",
-                InboundPolicies = new List<string>(),
-                OutboundPolicies = new List<string>(),
+                InboundPolicies = new List<Dictionary<string, string>>(),
+                OutboundPolicies = new List<Dictionary<string, string>>(),
                 PathStartsWith = "/value-api/",
                 ProductId = "x-p2",
             });
