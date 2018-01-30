@@ -2,5 +2,5 @@ FROM microsoft/aspnetcore:2.0
 ARG source
 WORKDIR /app
 EXPOSE 80
-COPY bin/wormhole /app
+COPY dist/wormhole /app
 ENTRYPOINT ["dotnet", "wormhole.dll"]

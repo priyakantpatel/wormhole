@@ -2,6 +2,6 @@
 !obj/Docker/publish/*
 !obj/Docker/empty/
 !dist/
-!bin/wormhole
-!bin/wormhole/*
+!dist/wormhole
+!dist/wormhole/*
 
