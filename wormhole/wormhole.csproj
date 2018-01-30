@@ -14,6 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="config\data\apis\product-api.json" />
+    <None Include="config\data\discovery\product-api-00001.json" />
+    <None Include="config\data\route-definitions.json" />
+    <None Include="config\wormhole-config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
   </ItemGroup>
 
