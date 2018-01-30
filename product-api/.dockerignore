@@ -1,0 +1,7 @@
+*
+!obj/Docker/publish/*
+!obj/Docker/empty/
+!dist/
+!dist/product-api
+!dist/product-api/*
+
