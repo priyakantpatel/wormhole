@@ -1,6 +1,6 @@
 {
   "Name": "My Api manager",
   "Version": "0.0.1",
-  "DataDirectory": ".\\data",
+  "DataDirectory": "./data",
   "RouteDefinitionFile": "route-definitions.json"
 }
