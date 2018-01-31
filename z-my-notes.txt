@@ -1,0 +1,12 @@
+
+
+patel.azurecr.io
+patel
+riF9InBpboRUdtL=ioRgVYlkRdMUUajM
+
+patel.azurecr.io/wormhole:214
+
+docker login patel.azurecr.io
+
+docker pull patel.azurecr.io/wormhole:214
+
